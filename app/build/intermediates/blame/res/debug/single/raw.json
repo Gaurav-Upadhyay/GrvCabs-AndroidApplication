@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/raw/gtm_analytics",
+        "source": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/res/raw/gtm_analytics"
+    },
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/raw/gtm_analytics",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/res/raw/gtm_analytics"
+    }
+]

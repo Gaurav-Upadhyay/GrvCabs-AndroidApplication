@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/menu/nav_items.xml",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/src/main/res/menu/nav_items.xml"
+    },
+    {
+        "merged": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
+        "source": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/src/main/res/menu/menu_main.xml"
+    },
+    {
+        "merged": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/menu/nav_items.xml",
+        "source": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/src/main/res/menu/nav_items.xml"
+    },
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/src/main/res/menu/menu_main.xml"
+    }
+]

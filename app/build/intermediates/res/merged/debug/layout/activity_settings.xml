@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ android:background="#78b761"
+    tools:context="com.grv.grvcabs.Settings">
+    <TextView
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:text="This page will contain the internal settings of the app when there is a need \n (will work on shared preferences) "
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
+        "source": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    }
+]

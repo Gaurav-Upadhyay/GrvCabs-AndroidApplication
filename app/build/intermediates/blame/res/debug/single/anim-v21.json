@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/Gaurav/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    }
+]

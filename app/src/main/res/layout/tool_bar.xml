@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+
+    android:elevation="4dp">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/edt1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
+            android:background="@layout/rounded_corner"
+            android:gravity="center"
+            android:onClick="findPlace"
+            android:text="Source"
+            android:textColor="#111111" />
+
+        <TextView
+            android:id="@+id/edt2"
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:alpha="0.5"
+            android:background="@layout/rounded_corner"
+            android:gravity="center"
+            android:onClick="findPlace2"
+            android:text="Destination"
+            android:textColor="#111111" />
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.Toolbar>

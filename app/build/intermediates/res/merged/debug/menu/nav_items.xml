@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group >
+        <item
+            android:id="@+id/Profile"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/MyBookings"
+            android:title="My Bookings" />
+
+
+
+    </group>
+
+    <item android:title="Preference">
+        <menu>
+
+            <item
+                android:id="@+id/settng"
+                android:icon="@drawable/ic_emoticon"
+                android:title="Settings" />
+
+        </menu>
+    </item>
+    <item android:title="Leaving??">
+        <menu>
+
+            <item
+                android:id="@+id/FeedBack"
+                android:icon="@drawable/ic_emoticon"
+                android:title="FeedBack" />
+            <item
+                android:id="@+id/Logout"
+                android:icon="@drawable/slogo"
+                android:title="Logout" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Grv Cabs</string>
+    <string-array name="cars_array">
+        <item>Any</item>
+        <item>sedan</item>
+        <item>HatchBack</item>
+    </string-array>
+</resources>
