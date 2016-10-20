@@ -22,7 +22,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     UserSessionManager session;
-    x
+    boolean doubleBackToExitPressedOnce = false;
 
     public void onLoginButtonPressed(View view) {
         Intent intent = new Intent(MainActivity.this, Login.class);
