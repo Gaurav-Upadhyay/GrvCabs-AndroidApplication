@@ -26,7 +26,6 @@ public class Registration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("2","1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         final LoginDBHelper userdbhelper = new LoginDBHelper(this);
