@@ -169,7 +169,7 @@ ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.x
 	android:screenOrientation
 		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:27:13-49
 	android:label
-		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:26:13-51
+		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:26:13-45
 	android:name
 		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:25:13-41
 activity#com.grv.grvcabs.Login
@@ -177,7 +177,7 @@ ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.x
 	android:screenOrientation
 		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:31:13-49
 	android:label
-		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:30:13-50
+		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:30:13-45
 	android:name
 		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:29:13-34
 activity#com.grv.grvcabs.MainPage
