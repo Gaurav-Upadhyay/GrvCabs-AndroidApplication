@@ -54,7 +54,7 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
-    UserSessionManager session;
+
     TextView et1, et2;
     LatLng latLng;
     static final LatLng delhilatLng = new LatLng(28.7041, 77.1025);
@@ -135,10 +135,6 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         et1 = (TextView) findViewById(R.id.edt1);
         et2 = (TextView) findViewById(R.id.edt2);
         // Session class instance
-        session = new UserSessionManager(getApplicationContext());
-
-        tvname.setText(session.retrieveName().toString().toUpperCase());
-        tvnumber.setText(session.retrieveNumber().toString());
 
         try {
             if (mMap == null) {
@@ -197,7 +193,6 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
 
                     case R.id.Logout:
                         finish();
-                        session.clearUser();
                         Intent intent2 = new Intent(MainPage.this, MainActivity.class);
                         startActivity(intent2);
                         finish();

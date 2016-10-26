@@ -21,7 +21,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    UserSessionManager session;
+
     boolean doubleBackToExitPressedOnce = false;
 
     public void onLoginButtonPressed(View view) {
@@ -46,13 +46,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        session = new UserSessionManager(getApplicationContext());
-        if (session.checkLogin()) {
-            Intent intent = new Intent(MainActivity.this, MainPage.class);
-            finish();
-            startActivity(intent);
-
-        }
         init();
 
     }
