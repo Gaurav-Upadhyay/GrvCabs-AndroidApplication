@@ -27,8 +27,7 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'com.viewpagerindicator:library:2.4.1@aar'
     compile 'com.android.volley:volley:1.0.0'
-    compile 'com.google.maps.android:android-maps-utils:0.4+'
+  
 
-    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
 
 }

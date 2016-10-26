@@ -2,8 +2,10 @@ package com.grv.grvcabs;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     public static final String LOGIN_URL = "http://gov.net16.net/GrvCabs/Login.php";
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
 
     public static final String KEY_USERNUMBER = "usernumber";
     public static final String KEY_PASSWORD = "password";
@@ -37,12 +40,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
 
         user_number = (EditText) findViewById(R.id.input_mobile_number);
@@ -114,11 +115,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             v.vibrate(400);
             user_number.setError("Invalid Phone Number");
         } else if (user_number.getText().toString().length() == 10 && user_pass.getText().toString().length() > 4) {
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-// Vibrate for 400 milliseconds
-            v.vibrate(400);
-
 
             // code goes here for server side
 
@@ -133,14 +129,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 // Vibrate for 400 milliseconds
-                                v.vibrate(1000);
+                                v.vibrate(400);
                                 openProfile();
                             } else {
                                 Toast.makeText(Login.this, "Details Incorrect", Toast.LENGTH_LONG).show();
                                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 // Vibrate for 400 milliseconds
-                                v.vibrate(1000);
+                                v.vibrate(400);
                             }
                         }
                     },
@@ -170,7 +166,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Intent intent = new Intent(this, MainPage.class);
         intent.putExtra(KEY_USERNUMBER, usernumber);
         startActivity(intent);
+        finish();
+
+
+        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString("number", user_number.getText().toString());
+        editor.commit();
     }
+
+
+
 
 
 }

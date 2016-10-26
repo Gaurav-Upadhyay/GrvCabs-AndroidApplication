@@ -51,19 +51,73 @@ import java.util.Map;
 
 public class MainPage extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     boolean doubleBackToExitPressedOnce = false;
+
+
+
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
-
+    TextView fare, dist;
     TextView et1, et2;
-    LatLng latLng;
+    LatLng latLng,latLng3;
     static final LatLng delhilatLng = new LatLng(28.7041, 77.1025);
     private GoogleMap mMap;
+    double a;
+    double b;
+    double c;
+    double d;
+    double e;
+    int x;
+    int z;
+    String rate;
+
+
+
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
 
 
     public void BookNow(View view) {
-        Intent intent = new Intent(MainPage.this, Booking.class);
-        startActivity(intent);
+        e = distance(a, b, c, d);
+        x = (int) e;
+        String i = Integer.toString(x);
+        dist.setText(i + "Km");
+        fare.setText(checkFare(x) + "INR");
+        ;
+    }
+
+    public String checkFare(int y) {
+        if (z == 0) {
+
+            int fare = (y * 12) + 100;
+            rate = Integer.toString(fare);
+        } else if (z == 1) {
+
+            int fare = (y * 10) + 100;
+            rate = Integer.toString(fare);
+        } else if (z == 2) {
+
+            int fare = 100 + (y * 8);
+            rate = Integer.toString(fare);
+        }
+        return rate;
+    }
+
+
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
 
 
@@ -98,13 +152,13 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         // parent.getItemAtPosition(pos)
         parent.getItemAtPosition(pos);
         if (pos == 0) {
-            Toast.makeText(getBaseContext(), "position 0 selected", Toast.LENGTH_LONG).show();
+            z = 0;
         }
         if (pos == 1) {
-            Toast.makeText(getBaseContext(), "position 1 selected", Toast.LENGTH_LONG).show();
+            z = 1;
         }
         if (pos == 2) {
-            Toast.makeText(getBaseContext(), "position 2 selected", Toast.LENGTH_LONG).show();
+            z = 2;
         }
     }
 
@@ -118,6 +172,9 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         setContentView(R.layout.activity_main_page);
         initInstances();
 
+
+
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -130,10 +187,11 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View v = navigationView.getHeaderView(0);
         View v2 = navigationView;
-        TextView tvname = (TextView) v.findViewById(R.id.name);
-        TextView tvnumber = (TextView) v.findViewById(R.id.number);
+
         et1 = (TextView) findViewById(R.id.edt1);
         et2 = (TextView) findViewById(R.id.edt2);
+        fare = (TextView) findViewById(R.id.fare);
+        dist = (TextView) findViewById(R.id.dist);
         // Session class instance
 
         try {
@@ -141,7 +199,8 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
                 mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.the_map)).getMap();
                 UiSettings mapsettings;
                 mapsettings = mMap.getUiSettings();
-                mapsettings.setAllGesturesEnabled(true);;
+                mapsettings.setAllGesturesEnabled(true);
+                ;
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(delhilatLng).zoom(10).build();
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
@@ -170,6 +229,11 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         drawerLayout.setDrawerListener(drawerToggle);
 
         navigation = (NavigationView) findViewById(R.id.navigation_view);
+
+
+
+
+
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -195,7 +259,13 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
                         finish();
                         Intent intent2 = new Intent(MainPage.this, MainActivity.class);
                         startActivity(intent2);
+                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                        editor.clear();
+                        editor.commit();
                         finish();
+
+
+
 
                         break;
                     case R.id.FeedBack:
@@ -256,10 +326,11 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             finish();
+
             return;
         }
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Press BACK again to exit...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Press BACK again to Logout...", Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 
@@ -295,6 +366,10 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
                             target(latLng).zoom(17).build();
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     et1.setText("Source: " + place.getName().toString());
+                    a = place.getLatLng().latitude;
+                    b = place.getLatLng().longitude;
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -312,7 +387,16 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
                 Log.d("Tag", "Tag");
                 // retrive the data by using getPlace() method.
                 Place place2 = PlaceAutocomplete.getPlace(this, data);
+
+                latLng3 = place2.getLatLng();
                 et2.setText("Destination: " + place2.getName().toString());
+                c = place2.getLatLng().latitude;
+                d = place2.getLatLng().longitude;
+                Marker TP2 = mMap.addMarker(new MarkerOptions().position(latLng3).title(place2.getName().toString()));
+                CameraPosition cameraPosition = new CameraPosition.Builder().
+                        target(latLng3).zoom(17).build();
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
             }
         } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
             Status status = PlaceAutocomplete.getStatus(this, data);
@@ -321,6 +405,8 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         } else if (resultCode == RESULT_CANCELED) {
             // The user canceled the operation.
         }
+
+
     }
 
 }

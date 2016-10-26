@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -21,86 +21,178 @@
                 android:id="@+id/toolbar"
                 layout="@layout/tool_bar"></include>
 
-
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/the_map"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:layout_width="match_parent"
-
-                android:layout_height="match_parent"
-                android:layout_below="@+id/toolbar" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:orientation="vertical"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
-                <View
+                android:layout_height="match_parent">
 
+                <fragment
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/the_map"
+                    android:name="com.google.android.gms.maps.MapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#111111" />
+                    android:layout_height="match_parent" />
 
                 <LinearLayout
+
+                    android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f1e905"
-                    android:orientation="horizontal">
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Choose Your Ride:"
-                        android:textColor="#111111" />
+                    android:orientation="vertical">
 
                     <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:background="#111111" />
 
-                    <Spinner
-
-                        android:id="@+id/spinner"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:background="#f1e905"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Choose Your Ride:"
+                            android:textColor="#111111" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#111111" />
+
+                        <Spinner
+
+                            android:id="@+id/spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#111111" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f1e905"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Estimate Fare:"
+                            android:textColor="#111111" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#111111" />
+
+                        <TextView
+                            android:textColor="#111111"
+                            android:gravity="center"
+                            android:text="---"
+                            android:id="@+id/fare"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#111111" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f1e905"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Distance:"
+                            android:textColor="#111111" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#111111" />
+
+                        <TextView
+                            android:textColor="#111111"
+                            android:id="@+id/dist"
+                            android:gravity="center"
+                            android:text="---"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:background="#b10606"
+                        android:orientation="horizontal"
+                        android:id="@+id/linearLayout">
+
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:onClick="BookNow"
+                            android:text="Check Fare"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp" />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#111111" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:onClick="BookNow"
+                            android:text="Book Now"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp" />
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#111111" />
-
-                <TextView
-                    android:onClick="BookNow"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center"
-                    android:text="Book Now"
-                    android:textColor="#ffffff"
-                    android:textSize="25sp" />
-
-                <View
-
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#111111" />
-            </LinearLayout>
+            </RelativeLayout>
 
 
-
-
-
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 

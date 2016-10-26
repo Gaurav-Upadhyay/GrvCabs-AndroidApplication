@@ -12,12 +12,12 @@
         "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/select_dialog_item_material.xml"
     },
     {
-        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
-        "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_tab_icon.xml"
-    },
-    {
         "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/layout/amu_info_window.xml",
         "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.maps.android/android-maps-utils/0.4.4/res/layout/amu_info_window.xml"
+    },
+    {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_tab_icon.xml"
     },
     {
         "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/layout/activity_settings.xml",

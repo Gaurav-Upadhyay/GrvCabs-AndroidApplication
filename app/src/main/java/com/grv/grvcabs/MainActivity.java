@@ -21,6 +21,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
+
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -45,9 +47,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sessionCheck();
         init();
 
+    }
+
+    public void sessionCheck() {
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String restoredText = prefs.getString("number", null);
+        if (restoredText != null) {
+
+            Intent intent = new Intent(MainActivity.this, MainPage.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void init() {

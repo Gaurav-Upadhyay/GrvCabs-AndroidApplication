@@ -677,8 +677,6 @@ MERGED from [com.android.support:support-compat:24.2.1] /Android/AndroidStudioPr
 MERGED from [com.android.support:support-core-ui:24.2.1] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:24.2.1] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.volley:volley:1.0.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/AndroidManifest.xml:9:5-20
-MERGED from [com.google.maps.android:android-maps-utils:0.4.4] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.maps.android/android-maps-utils/0.4.4/AndroidManifest.xml:7:5-11:19
-MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/AndroidManifest.xml:5:5-19
 	android:label
 		ADDED from /Android/AndroidStudioProjects/GrvCabs/app/src/main/AndroidManifest.xml:11:9-41
 	android:supportsRtl
@@ -1420,8 +1418,6 @@ MERGED from [com.android.support:support-core-ui:24.2.1] /Android/AndroidStudioP
 MERGED from [com.android.support:support-compat:24.2.1] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:21:5-23:58
 MERGED from [com.viewpagerindicator:library:2.4.1] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.viewpagerindicator/library/2.4.1/AndroidManifest.xml:3:5-42
 MERGED from [com.android.volley:volley:1.0.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/AndroidManifest.xml:7:5-43
-MERGED from [com.google.maps.android:android-maps-utils:0.4.4] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.maps.android/android-maps-utils/0.4.4/AndroidManifest.xml:5:5-43
-MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/AndroidManifest.xml:3:5-72
 	tools:overrideLibrary
 		ADDED from [com.android.support:support-v4:24.2.1] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:23:9-51
 	android:targetSdkVersion
@@ -1488,7 +1484,6 @@ MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Android/Andro
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.maps.android:android-maps-utils:0.4.4] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.maps.android/android-maps-utils/0.4.4/AndroidManifest.xml:8:9-10:69
 	android:value
 		ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:23:13-66
 	android:name
