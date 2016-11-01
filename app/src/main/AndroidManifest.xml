@@ -3,7 +3,7 @@
     package="com.grv.grvcabs">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -36,8 +36,8 @@
             android:name=".MainPage"
             android:screenOrientation="portrait" />
         <activity android:name=".Booking" />
-        <activity android:name=".MyProfile" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Feedback"></activity>
     </application>
 
 </manifest>

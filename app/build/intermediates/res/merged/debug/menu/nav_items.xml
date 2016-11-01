@@ -2,34 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group >
-        <item
-            android:id="@+id/Profile"
-            android:title="My Profile" />
+
         <item
             android:id="@+id/MyBookings"
             android:title="My Bookings" />
 
-
-
     </group>
 
-    <item android:title="Preference">
+
+    <item android:title="Us">
         <menu>
 
             <item
-                android:id="@+id/settng"
-                android:icon="@drawable/ic_emoticon"
-                android:title="Settings" />
+                android:id="@+id/RateUs"
+                android:title="Rate Us" />
+            <item
+                android:id="@+id/FeedBack"
+                android:title="Feedback"/>
 
         </menu>
     </item>
+
     <item android:title="Leaving??">
         <menu>
 
-            <item
-                android:id="@+id/FeedBack"
-                android:icon="@drawable/ic_emoticon"
-                android:title="FeedBack" />
             <item
                 android:id="@+id/Logout"
                 android:icon="@drawable/slogo"

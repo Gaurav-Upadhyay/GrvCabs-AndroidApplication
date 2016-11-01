@@ -88,6 +88,10 @@
         "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
+        "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/drawable/frame.xml",
+        "source": "/Android/AndroidStudioProjects/GrvCabs/app/src/main/res/drawable/frame.xml"
+    },
+    {
         "merged": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_dark.xml",
         "source": "/Android/AndroidStudioProjects/GrvCabs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable/common_google_signin_btn_text_dark.xml"
     },

@@ -1,5 +1,6 @@
 package com.grv.grvcabs;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,6 +38,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private String usernumber;
     private String password;
+    public ProgressDialog loading;
 
 
 
@@ -120,18 +122,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             usernumber = user_number.getText().toString().trim();
             password = user_pass.getText().toString().trim();
-
+            loading = ProgressDialog.show(this, "Please wait...", "Processing...", false, false);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             if (response.trim().contains("success")) {
                                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
+loading.dismiss();
 // Vibrate for 400 milliseconds
                                 v.vibrate(400);
                                 openProfile();
                             } else {
+                                loading.dismiss();
                                 Toast.makeText(Login.this, "Details Incorrect", Toast.LENGTH_LONG).show();
                                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 

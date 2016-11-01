@@ -53,13 +53,12 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
     boolean doubleBackToExitPressedOnce = false;
 
 
-
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
     TextView fare, dist;
     TextView et1, et2;
-    LatLng latLng,latLng3;
+    LatLng latLng, latLng3;
     static final LatLng delhilatLng = new LatLng(28.7041, 77.1025);
     private GoogleMap mMap;
     double a;
@@ -70,19 +69,23 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
     int x;
     int z;
     String rate;
-
-
+String pdd1,pdd2;
 
     public static final String MY_PREFS_NAME = "MyPrefsFile";
 
 
     public void BookNow(View view) {
+        Intent intent= new Intent(MainPage.this,Booking.class);
+
+        startActivity(intent);
+    }
+
+    public  void CheckFare(View view){
         e = distance(a, b, c, d);
         x = (int) e;
         String i = Integer.toString(x);
         dist.setText(i + "Km");
         fare.setText(checkFare(x) + "INR");
-        ;
     }
 
     public String checkFare(int y) {
@@ -173,8 +176,6 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         initInstances();
 
 
-
-
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -231,30 +232,20 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
         navigation = (NavigationView) findViewById(R.id.navigation_view);
 
 
-
-
-
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 switch (id) {
 
-
-                    case R.id.Profile:
-                        Intent it = new Intent(MainPage.this, MyProfile.class);
-                        startActivity(it);
+                    case R.id.FeedBack:
+                        Intent intent3 = new Intent(MainPage.this, Feedback.class);
+                        startActivity(intent3);
                         break;
                     case R.id.MyBookings:
-
                         Intent il = new Intent(MainPage.this, Booking.class);
                         startActivity(il);
                         break;
-                    case R.id.settng:
-                        Intent intent = new Intent(MainPage.this, Settings.class);
-                        startActivity(intent);
-                        break;
-
                     case R.id.Logout:
                         finish();
                         Intent intent2 = new Intent(MainPage.this, MainActivity.class);
@@ -263,24 +254,15 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
                         editor.clear();
                         editor.commit();
                         finish();
-
-
-
-
                         break;
-                    case R.id.FeedBack:
+                    case R.id.RateUs:
                         final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
                         try {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store")));
-
-                            Toast.makeText(getBaseContext(), "Link directing to Your App's Playstore page \nor\n just playstore if not regestered on playstore", Toast.LENGTH_LONG).show();
-                            //for correct place
-                            // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
                         } catch (android.content.ActivityNotFoundException anfe) {
 
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
-
                         break;
                 }
                 return false;
@@ -351,6 +333,7 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
             if (resultCode == RESULT_OK) {
                 // retrive the data by using getPlace() method.
                 Place place = PlaceAutocomplete.getPlace(this, data);
+                pdd1=place.getName().toString().trim();
                 latLng = place.getLatLng();
                 try {
                     if (mMap == null) {
@@ -387,7 +370,7 @@ public class MainPage extends AppCompatActivity implements AdapterView.OnItemSel
                 Log.d("Tag", "Tag");
                 // retrive the data by using getPlace() method.
                 Place place2 = PlaceAutocomplete.getPlace(this, data);
-
+                pdd2=place2.getName().toString().trim();
                 latLng3 = place2.getLatLng();
                 et2.setText("Destination: " + place2.getName().toString());
                 c = place2.getLatLng().latitude;

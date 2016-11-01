@@ -49,8 +49,8 @@
             android:name="com.grv.grvcabs.MainPage"
             android:screenOrientation="portrait" />
         <activity android:name="com.grv.grvcabs.Booking" />
-        <activity android:name="com.grv.grvcabs.MyProfile" />
         <activity android:name="com.grv.grvcabs.Settings" />
+        <activity android:name="com.grv.grvcabs.Feedback" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
