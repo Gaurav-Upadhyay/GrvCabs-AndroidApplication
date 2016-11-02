@@ -35,7 +35,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     public static final String KEY_USERNAME = "name";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_NUMBER = "number";
-    private ProgressDialog loading;
+
+    public ProgressDialog loading;
 
     private void registerUser() {
         Log.e("Tag", "Tag4");
@@ -69,7 +70,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                         final String username = username1.getText().toString().trim();
                         final String password = password1.getText().toString().trim();
                         final String usernumber = usermobile1.getText().toString().trim();
-                        loading = ProgressDialog.show(this, "Please wait...", "Registering...", false, false);
+                        loading = ProgressDialog.show(this, "Please wait...", "Processing...", false, false);
+
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                                 new Response.Listener<String>() {
                                     @Override
@@ -90,7 +92,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
+                                        loading.dismiss();
 // Vibrate for 400 milliseconds
                                         v.vibrate(400);
                                         Toast.makeText(Registration.this, error.toString(), Toast.LENGTH_LONG).show();

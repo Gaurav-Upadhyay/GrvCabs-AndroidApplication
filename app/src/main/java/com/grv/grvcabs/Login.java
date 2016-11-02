@@ -41,7 +41,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public ProgressDialog loading;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +128,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         public void onResponse(String response) {
                             if (response.trim().contains("success")) {
                                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-loading.dismiss();
+                                loading.dismiss();
 // Vibrate for 400 milliseconds
                                 v.vibrate(400);
                                 openProfile();
@@ -146,6 +145,7 @@ loading.dismiss();
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            loading.dismiss();
                             Toast.makeText(Login.this, error.toString(), Toast.LENGTH_LONG).show();
                         }
                     }) {
@@ -176,9 +176,6 @@ loading.dismiss();
         editor.putString("number", user_number.getText().toString());
         editor.commit();
     }
-
-
-
 
 
 }

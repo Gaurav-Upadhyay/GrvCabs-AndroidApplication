@@ -1,5 +1,6 @@
 package com.grv.grvcabs;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -31,6 +33,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -45,6 +53,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -52,35 +63,75 @@ import java.util.Map;
 public class MainPage extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     boolean doubleBackToExitPressedOnce = false;
 
-
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
-    TextView fare, dist;
-    TextView et1, et2;
+    TextView fare, dist, et1, et2;
     LatLng latLng, latLng3;
     static final LatLng delhilatLng = new LatLng(28.7041, 77.1025);
     private GoogleMap mMap;
-    double a;
-    double b;
-    double c;
-    double d;
-    double e;
-    int x;
-    int z;
-    String rate;
-String pdd1,pdd2;
+    double a, b, c, d, e;
+    int x, z;
+
+    String contact, rate, pdd1, pdd2;
 
     public static final String MY_PREFS_NAME = "MyPrefsFile";
+    private ProgressDialog loading;
+    private static final String REGISTER_URL = "http://gov.net16.net/GrvCabs/Booking.php";
 
+    public static final String KEY_ID = "id";
+    public static final String KEY_CONTACT = "Customer";
+    public static final String KEY_FROM = "Source";
+    public static final String KEY_TO = "Destination";
+    public static final String KEY_TIME = "TimeOfBooking";
+    public static final String key_STATUS="Status";
+
+    String Booked= "Booked";
 
     public void BookNow(View view) {
-        Intent intent= new Intent(MainPage.this,Booking.class);
+        loading = ProgressDialog.show(this, "Please wait...", "Processing...", false, false);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.contains("Successfully")){
+                            loading.dismiss();
+                            Intent intent= new Intent(MainPage.this, Booking.class);
+                            startActivity(intent);
+                        }else if(response.contains("Unsuccessfull")){
+                            loading.dismiss();
+                            Toast.makeText(getBaseContext(), "Only One Booking allowed at a Time...",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        loading.dismiss();
+                        Toast.makeText(MainPage.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_ID, "1");
+                params.put(KEY_CONTACT, contact);
+                params.put(KEY_FROM, pdd1);
+                params.put(KEY_TO, pdd2);
+                params.put(KEY_TIME, DateFormat.getDateTimeInstance().format(new Date()));
+                params.put(key_STATUS, Booked);
+                return params;
+            }
 
-        startActivity(intent);
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
-    public  void CheckFare(View view){
+
+
+    public void CheckFare(View view) {
         e = distance(a, b, c, d);
         x = (int) e;
         String i = Integer.toString(x);
@@ -126,7 +177,6 @@ String pdd1,pdd2;
 
     public void findPlace(View view) {
         try {
-
             Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(this);
             startActivityForResult(intent, 1);
         } catch (GooglePlayServicesRepairableException e) {
@@ -138,7 +188,6 @@ String pdd1,pdd2;
 
     public void findPlace2(View view) {
         try {
-
             Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(this);
             startActivityForResult(intent, 2);
         } catch (GooglePlayServicesRepairableException e) {
@@ -167,50 +216,6 @@ String pdd1,pdd2;
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page);
-        initInstances();
-
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.cars_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        View v = navigationView.getHeaderView(0);
-        View v2 = navigationView;
-
-        et1 = (TextView) findViewById(R.id.edt1);
-        et2 = (TextView) findViewById(R.id.edt2);
-        fare = (TextView) findViewById(R.id.fare);
-        dist = (TextView) findViewById(R.id.dist);
-        // Session class instance
-
-        try {
-            if (mMap == null) {
-                mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.the_map)).getMap();
-                UiSettings mapsettings;
-                mapsettings = mMap.getUiSettings();
-                mapsettings.setAllGesturesEnabled(true);
-                ;
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(delhilatLng).zoom(10).build();
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
     }
 
 
@@ -270,6 +275,58 @@ String pdd1,pdd2;
         });
 
     }
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_page);
+        initInstances();
+
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.cars_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View v = navigationView.getHeaderView(0);
+        View v2 = navigationView;
+
+        et1 = (TextView) findViewById(R.id.edt1);
+        et2 = (TextView) findViewById(R.id.edt2);
+        fare = (TextView) findViewById(R.id.fare);
+        dist = (TextView) findViewById(R.id.dist);
+        // Session class instance
+
+        try {
+            if (mMap == null) {
+                mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.the_map)).getMap();
+                UiSettings mapsettings;
+                mapsettings = mMap.getUiSettings();
+                mapsettings.setAllGesturesEnabled(true);
+                ;
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(delhilatLng).zoom(10).build();
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        SharedPreferences sd = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        contact = sd.getString("number", "");
+
+    }
+
+
 
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
@@ -333,7 +390,7 @@ String pdd1,pdd2;
             if (resultCode == RESULT_OK) {
                 // retrive the data by using getPlace() method.
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                pdd1=place.getName().toString().trim();
+                pdd1 = place.getName().toString().trim();
                 latLng = place.getLatLng();
                 try {
                     if (mMap == null) {
@@ -370,7 +427,7 @@ String pdd1,pdd2;
                 Log.d("Tag", "Tag");
                 // retrive the data by using getPlace() method.
                 Place place2 = PlaceAutocomplete.getPlace(this, data);
-                pdd2=place2.getName().toString().trim();
+                pdd2 = place2.getName().toString().trim();
                 latLng3 = place2.getLatLng();
                 et2.setText("Destination: " + place2.getName().toString());
                 c = place2.getLatLng().latitude;
@@ -388,10 +445,7 @@ String pdd1,pdd2;
         } else if (resultCode == RESULT_CANCELED) {
             // The user canceled the operation.
         }
-
-
     }
-
 }
 
 
